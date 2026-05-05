@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEO Audit & Proposal - Hometown Communities</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>SEO Audit Report | Hometown Communities</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --navy: #1e3a5f;
+            --navy-dark: #152a45;
+            --coral: #e86f51;
+            --coral-hover: #d55f42;
+            --light-bg: #f5f7fa;
+            --white: #ffffff;
+            --text-dark: #2d3748;
+            --text-gray: #64748b;
+            --text-light: #94a3b8;
+            --border: #e2e8f0;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,68 +29,111 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #1a1a2e;
-            background: #f8fafc;
+            color: var(--text-dark);
+            background: var(--white);
         }
 
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--navy);
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .header-meta {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+        }
+
+        /* Hero */
         .hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 60px 24px;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.25rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
-        .hero .subtitle {
+        .hero p {
             font-size: 1.1rem;
             opacity: 0.9;
-            margin-bottom: 20px;
-        }
-
-        .hero .meta {
-            font-size: 0.9rem;
-            opacity: 0.7;
-        }
-
-        .container {
-            max-width: 900px;
+            max-width: 600px;
             margin: 0 auto;
-            padding: 40px 20px;
+        }
+
+        .hero-url {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .nav-tabs {
             display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
         .nav-tab {
-            padding: 12px 24px;
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
+            padding: 16px 24px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-gray);
             cursor: pointer;
-            font-weight: 500;
+            border-bottom: 3px solid transparent;
             transition: all 0.2s;
         }
 
         .nav-tab:hover {
-            border-color: #3b82f6;
-            color: #3b82f6;
+            color: var(--navy);
         }
 
         .nav-tab.active {
-            background: #3b82f6;
-            border-color: #3b82f6;
-            color: white;
+            color: var(--coral);
+            border-bottom-color: var(--coral);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 24px;
         }
 
         .section {
@@ -85,154 +144,369 @@
             display: block;
         }
 
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
+        /* Alert Boxes */
+        .alert {
+            padding: 20px 24px;
+            border-radius: 8px;
             margin-bottom: 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
         }
 
-        .card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #1a1a2e;
+        .alert-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .alert-danger {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+        }
+
+        .alert-danger .alert-icon { color: var(--danger); }
+
+        .alert-warning {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+        }
+
+        .alert-warning .alert-icon { color: var(--warning); }
+
+        .alert-success {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+        }
+
+        .alert-success .alert-icon { color: var(--success); }
+
+        .alert h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .alert p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin: 0;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            background: var(--light-bg);
+        }
+
+        .card-header h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--danger);
+            line-height: 1;
+        }
+
+        .stat-number.warning { color: var(--warning); }
+        .stat-number.success { color: var(--success); }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-top: 8px;
+        }
+
+        /* Issue Cards */
+        .issue-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: box-shadow 0.2s;
+        }
+
+        .issue-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .issue-header {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
-        .card h3 {
-            font-size: 1.1rem;
-            margin: 20px 0 10px 0;
-            color: #374151;
+        .issue-number {
+            width: 28px;
+            height: 28px;
+            background: var(--navy);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
         }
 
-        .card p {
-            color: #4b5563;
-            margin-bottom: 15px;
+        .issue-title {
+            font-weight: 600;
+            color: var(--navy);
+            flex: 1;
         }
 
-        .alert {
-            padding: 16px 20px;
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-critical { background: #fee2e2; color: #dc2626; }
+        .badge-high { background: #ffedd5; color: #c2410c; }
+        .badge-medium { background: #fef3c7; color: #b45309; }
+        .badge-low { background: #d1fae5; color: #047857; }
+
+        .issue-content p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .issue-content strong {
+            color: var(--text-dark);
+        }
+
+        .analogy-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 3px solid #0ea5e9;
+            padding: 12px 16px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 12px;
+        }
+
+        .analogy-box p {
+            margin: 0;
+            font-style: italic;
+            color: #0369a1;
+        }
+
+        /* Competitor Table */
+        .competitor-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .competitor-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .competitor-item:last-child {
+            border-bottom: none;
+        }
+
+        .competitor-rank {
+            width: 36px;
+            height: 36px;
+            background: var(--light-bg);
             border-radius: 8px;
-            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--navy);
+            margin-right: 16px;
         }
 
-        .alert-red {
+        .competitor-info {
+            flex: 1;
+        }
+
+        .competitor-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .competitor-type {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .competitor-item.you {
             background: #fef2f2;
-            border-left: 4px solid #ef4444;
-            color: #991b1b;
+            margin: 8px -24px;
+            padding: 14px 24px;
+            border-radius: 8px;
+            border: 1px dashed var(--danger);
         }
 
-        .alert-yellow {
-            background: #fffbeb;
-            border-left: 4px solid #f59e0b;
-            color: #92400e;
+        .competitor-item.you .competitor-rank {
+            background: #fee2e2;
+            color: var(--danger);
         }
 
-        .alert-green {
-            background: #f0fdf4;
-            border-left: 4px solid #22c55e;
-            color: #166534;
-        }
-
-        .alert-blue {
-            background: #eff6ff;
-            border-left: 4px solid #3b82f6;
-            color: #1e40af;
-        }
-
+        /* Tables */
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
         }
 
         th, td {
             padding: 12px 16px;
             text-align: left;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
         }
 
         th {
-            background: #f8fafc;
+            background: var(--light-bg);
             font-weight: 600;
-            color: #374151;
+            color: var(--navy);
         }
 
-        tr:hover {
-            background: #f8fafc;
+        tr:hover td {
+            background: #fafbfc;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .badge-red { background: #fee2e2; color: #dc2626; }
-        .badge-yellow { background: #fef3c7; color: #d97706; }
-        .badge-green { background: #d1fae5; color: #059669; }
-        .badge-blue { background: #dbeafe; color: #2563eb; }
-
-        .issue-card {
-            border: 1px solid #e2e8f0;
+        /* Code Blocks */
+        pre {
+            background: var(--navy-dark);
+            color: #e2e8f0;
+            padding: 16px 20px;
             border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 16px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            margin: 16px 0;
         }
 
-        .issue-card h4 {
-            font-size: 1rem;
-            margin-bottom: 10px;
+        code {
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+
+        .inline-code {
+            background: var(--light-bg);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--coral);
+        }
+
+        /* Phase Cards */
+        .phase-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .phase-header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            color: white;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .phase-number {
+            background: var(--coral);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .phase-title {
+            font-weight: 600;
+        }
+
+        .phase-timeline {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-left: auto;
+        }
+
+        .phase-body {
+            padding: 24px;
+        }
+
+        .phase-section {
+            margin-bottom: 24px;
+        }
+
+        .phase-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .phase-section h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .issue-card .analogy {
-            background: #f0f9ff;
-            padding: 12px 16px;
-            border-radius: 6px;
-            margin-top: 12px;
-            font-style: italic;
-            color: #0369a1;
-        }
-
-        code {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-        }
-
-        pre {
-            background: #1e293b;
-            color: #e2e8f0;
-            padding: 20px;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 15px 0;
-        }
-
-        pre code {
-            background: none;
-            padding: 0;
-        }
-
+        /* Checklist */
         .checklist {
             list-style: none;
         }
 
         .checklist li {
-            padding: 10px 0;
-            padding-left: 30px;
             position: relative;
-            border-bottom: 1px solid #f1f5f9;
+            padding: 10px 0 10px 32px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
         }
 
         .checklist li::before {
@@ -242,741 +516,912 @@
             top: 12px;
             width: 18px;
             height: 18px;
-            border: 2px solid #cbd5e1;
+            border: 2px solid var(--border);
             border-radius: 4px;
         }
 
-        .phase-header {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+        .checklist .note {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 4px;
         }
 
-        .phase-header h3 {
-            color: white;
-            margin: 0;
-        }
-
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin: 20px 0;
-        }
-
-        .stat-card {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .stat-card .number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ef4444;
-        }
-
-        .stat-card .label {
-            color: #64748b;
-            font-size: 0.9rem;
-        }
-
-        .competitor-row {
+        /* Priority Matrix */
+        .priority-list {
             display: flex;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .competitor-row .rank {
-            width: 40px;
-            height: 40px;
-            background: #f1f5f9;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            margin-right: 16px;
-        }
-
-        .competitor-row.you {
-            background: #fef2f2;
-            margin: 0 -20px;
-            padding: 12px 20px;
-            border-radius: 8px;
-        }
-
-        .competitor-row.you .rank {
-            background: #fee2e2;
-            color: #dc2626;
-        }
-
-        .priority-matrix {
-            display: grid;
-            gap: 12px;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .priority-item {
             display: flex;
             align-items: center;
-            padding: 16px;
-            background: #f8fafc;
+            padding: 14px 16px;
+            background: var(--light-bg);
             border-radius: 8px;
             gap: 16px;
         }
 
-        .priority-item .priority-badge {
-            padding: 6px 12px;
+        .priority-item .task {
+            flex: 1;
+            font-size: 0.9rem;
+        }
+
+        .priority-item .effort, .priority-item .impact {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            text-align: center;
+            min-width: 60px;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--coral);
+            color: white;
+            padding: 12px 28px;
             border-radius: 6px;
             font-weight: 600;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-
-        .priority-critical { background: #fee2e2; color: #dc2626; }
-        .priority-high { background: #fed7aa; color: #c2410c; }
-        .priority-medium { background: #fef3c7; color: #b45309; }
-        .priority-low { background: #d1fae5; color: #047857; }
-
-        .toc {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-
-        .toc h4 {
-            margin-bottom: 12px;
-        }
-
-        .toc ul {
-            list-style: none;
-        }
-
-        .toc li {
-            padding: 6px 0;
-        }
-
-        .toc a {
-            color: #3b82f6;
             text-decoration: none;
+            transition: background 0.2s;
         }
 
-        .toc a:hover {
-            text-decoration: underline;
+        .cta-button:hover {
+            background: var(--coral-hover);
         }
 
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 1.8rem;
+        /* Footer */
+        .footer {
+            background: var(--navy-dark);
+            color: white;
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.7;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .nav-tabs {
-                flex-direction: column;
+                overflow-x: auto;
             }
 
             .nav-tab {
-                text-align: center;
+                padding: 16px 16px;
+                white-space: nowrap;
             }
 
-            .stat-grid {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .competitor-item.you {
+                margin: 8px -16px;
+                padding: 14px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
                 grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .stat-card {
+                padding: 16px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>SEO Audit & Remediation Proposal</h1>
-        <p class="subtitle">Hometown Communities - hometowncommunities.com</p>
-        <p class="meta">Prepared May 5, 2026 | Focus: Location Pages</p>
-    </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="8" fill="#1e3a5f"/>
+                <path d="M12 28V16L20 12L28 16V28L20 32L12 28Z" stroke="#e86f51" stroke-width="2" fill="none"/>
+                <circle cx="20" cy="20" r="4" fill="#e86f51"/>
+            </svg>
+            RoverPass
+        </div>
+        <div class="header-meta">SEO Audit Report • May 5, 2026</div>
+    </header>
 
-    <div class="container">
+    <!-- Hero -->
+    <section class="hero">
+        <h1>SEO Audit & Remediation Proposal</h1>
+        <p>A comprehensive analysis of search visibility issues and actionable recommendations for improvement.</p>
+        <div class="hero-url">hometowncommunities.com</div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
         <div class="nav-tabs">
             <div class="nav-tab active" onclick="showSection('summary')">Executive Summary</div>
             <div class="nav-tab" onclick="showSection('technical')">Technical Audit</div>
             <div class="nav-tab" onclick="showSection('proposal')">Remediation Plan</div>
         </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
 
         <!-- EXECUTIVE SUMMARY -->
         <div id="summary" class="section active">
-            <div class="card">
-                <h2>The Problem</h2>
-                <div class="alert alert-red">
-                    <strong>Your community pages are invisible to Google.</strong> When people search for "manufactured home community Harlingen TX," they find your competitors instead of you.
-                </div>
 
-                <div class="stat-grid">
-                    <div class="stat-card">
-                        <div class="number">2</div>
-                        <div class="label">Pages Google knows about</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="number">51</div>
-                        <div class="label">Technical errors found</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="number">0</div>
-                        <div class="label">First page rankings</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="number">5+</div>
-                        <div class="label">Broken images</div>
-                    </div>
+            <div class="alert alert-danger">
+                <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <div>
+                    <h3>Your community pages are invisible to Google</h3>
+                    <p>When people search for "manufactured home community Harlingen TX," they find your competitors instead of you.</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Pages Google Knows About</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">51</div>
+                    <div class="stat-label">Technical Errors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Page 1 Rankings</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number warning">5+</div>
+                    <div class="stat-label">Broken Images</div>
                 </div>
             </div>
 
             <div class="card">
-                <h2>The 5 Issues Hurting Your Business</h2>
-
-                <div class="issue-card">
-                    <h4><span class="badge badge-red">Critical</span> Issue 1: Google Can't Find Your Pages</h4>
-                    <p><strong>What's happening:</strong> Out of all your community pages, Google only knows about 2 of them.</p>
-                    <p><strong>Business impact:</strong> If someone searches for one of your other communities, they won't find you. That's lost leads and lost revenue.</p>
-                    <div class="analogy">Analogy: You have 10 stores, but only 2 are listed in the phone book.</div>
+                <div class="card-header">
+                    <h2>The 5 Issues Hurting Your Business</h2>
                 </div>
+                <div class="card-body">
 
-                <div class="issue-card">
-                    <h4><span class="badge badge-red">Critical</span> Issue 2: Duplicate Listings</h4>
-                    <p><strong>What's happening:</strong> Posada Del Sol has two different web addresses. Google sees these as competing pages.</p>
-                    <p><strong>Business impact:</strong> Instead of one strong listing, you have two weak ones fighting each other.</p>
-                    <div class="analogy">Analogy: Two billboards for the same store with different phone numbers. Customers get confused.</div>
-                </div>
+                    <div class="issue-card">
+                        <div class="issue-header">
+                            <div class="issue-number">1</div>
+                            <div class="issue-title">Google Can't Find Your Pages</div>
+                            <span class="badge badge-critical">Critical</span>
+                        </div>
+                        <div class="issue-content">
+                            <p><strong>What's happening:</strong> Out of all your community pages, Google only knows about 2 of them.</p>
+                            <p><strong>Business impact:</strong> If someone searches for one of your other communities, they won't find you. That's lost leads and lost revenue.</p>
+                            <div class="analogy-box">
+                                <p>💡 Think of it this way: You have 10 stores, but only 2 are listed in the phone book.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="issue-card">
-                    <h4><span class="badge badge-red">Critical</span> Issue 3: Missing Page Descriptions</h4>
-                    <p><strong>What's happening:</strong> Your pages don't have the short descriptions Google uses to understand your content.</p>
-                    <p><strong>Business impact:</strong> Google has to guess what your page is about. It often guesses wrong.</p>
-                    <div class="analogy">Analogy: A business card with your name but no description of what you do.</div>
-                </div>
+                    <div class="issue-card">
+                        <div class="issue-header">
+                            <div class="issue-number">2</div>
+                            <div class="issue-title">Duplicate Listings Causing Confusion</div>
+                            <span class="badge badge-critical">Critical</span>
+                        </div>
+                        <div class="issue-content">
+                            <p><strong>What's happening:</strong> Posada Del Sol has two different web addresses. Google sees these as competing pages.</p>
+                            <p><strong>Business impact:</strong> Instead of one strong listing, you have two weak ones fighting each other.</p>
+                            <div class="analogy-box">
+                                <p>💡 Think of it this way: Two billboards for the same store with different phone numbers. Customers get confused.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="issue-card">
-                    <h4><span class="badge badge-yellow">High</span> Issue 4: Technical Problems</h4>
-                    <p><strong>What's happening:</strong> Your pages have broken images, missing files, and 51 background errors.</p>
-                    <p><strong>Business impact:</strong> Google thinks your site isn't well-maintained, so it ranks you lower.</p>
-                    <div class="analogy">Analogy: A storefront with flickering lights and broken displays.</div>
-                </div>
+                    <div class="issue-card">
+                        <div class="issue-header">
+                            <div class="issue-number">3</div>
+                            <div class="issue-title">Missing Page Descriptions</div>
+                            <span class="badge badge-critical">Critical</span>
+                        </div>
+                        <div class="issue-content">
+                            <p><strong>What's happening:</strong> Your pages don't have the short descriptions Google uses to understand your content.</p>
+                            <p><strong>Business impact:</strong> Google has to guess what your page is about. It often guesses wrong.</p>
+                            <div class="analogy-box">
+                                <p>💡 Think of it this way: A business card with your name but no description of what you do.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="issue-card">
-                    <h4><span class="badge badge-yellow">High</span> Issue 5: Others Rank for YOUR Brand</h4>
-                    <p><strong>What's happening:</strong> TripAdvisor, Campspot, and Facebook pages for your communities rank higher than your own website.</p>
-                    <p><strong>Business impact:</strong> Third-party sites control your narrative and get your traffic.</p>
-                    <div class="analogy">Analogy: Yelp reviews show up before your website. You don't control what they say.</div>
+                    <div class="issue-card">
+                        <div class="issue-header">
+                            <div class="issue-number">4</div>
+                            <div class="issue-title">Technical Problems</div>
+                            <span class="badge badge-high">High</span>
+                        </div>
+                        <div class="issue-content">
+                            <p><strong>What's happening:</strong> Your pages have broken images, missing files, and 51 background errors.</p>
+                            <p><strong>Business impact:</strong> Google thinks your site isn't well-maintained, so it ranks you lower.</p>
+                            <div class="analogy-box">
+                                <p>💡 Think of it this way: A storefront with flickering lights and broken displays.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="issue-card">
+                        <div class="issue-header">
+                            <div class="issue-number">5</div>
+                            <div class="issue-title">Others Rank for YOUR Brand</div>
+                            <span class="badge badge-high">High</span>
+                        </div>
+                        <div class="issue-content">
+                            <p><strong>What's happening:</strong> TripAdvisor, Campspot, and Facebook pages for your communities rank higher than your own website.</p>
+                            <p><strong>Business impact:</strong> Third-party sites control your narrative and get your traffic.</p>
+                            <div class="analogy-box">
+                                <p>💡 Think of it this way: Yelp reviews show up before your website. You don't control what they say.</p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
             <div class="card">
-                <h2>Who's Showing Up Instead of You</h2>
-                <p>When someone searches "manufactured home community Harlingen TX":</p>
+                <div class="card-header">
+                    <h2>Who's Showing Up Instead of You</h2>
+                </div>
+                <div class="card-body">
+                    <p style="color: var(--text-gray); margin-bottom: 16px;">When someone searches "manufactured home community Harlingen TX":</p>
 
-                <div class="competitor-row">
-                    <div class="rank">1</div>
-                    <div><strong>Zillow</strong> - Real estate giant</div>
-                </div>
-                <div class="competitor-row">
-                    <div class="rank">2</div>
-                    <div><strong>MHVillage</strong> - Industry directory</div>
-                </div>
-                <div class="competitor-row">
-                    <div class="rank">3</div>
-                    <div><strong>Homes.com</strong> - Real estate aggregator</div>
-                </div>
-                <div class="competitor-row">
-                    <div class="rank">4</div>
-                    <div><strong>Champion Homes</strong> - Manufacturer</div>
-                </div>
-                <div class="competitor-row">
-                    <div class="rank">5</div>
-                    <div><strong>rootsmg.com</strong> - Direct competitor (Carefree Valley)</div>
-                </div>
-                <div class="competitor-row">
-                    <div class="rank">6</div>
-                    <div><strong>TripAdvisor</strong> - Has a page about YOUR property</div>
-                </div>
-                <div class="competitor-row you">
-                    <div class="rank">?</div>
-                    <div><strong>Hometown Communities</strong> - Not on page 1</div>
+                    <ul class="competitor-list">
+                        <li class="competitor-item">
+                            <div class="competitor-rank">1</div>
+                            <div class="competitor-info">
+                                <div class="competitor-name">Zillow</div>
+                                <div class="competitor-type">Real estate giant</div>
+                            </div>
+                        </li>
+                        <li class="competitor-item">
+                            <div class="competitor-rank">2</div>
+                            <div class="competitor-info">
+                                <div class="competitor-name">MHVillage</div>
+                                <div class="competitor-type">Industry directory</div>
+                            </div>
+                        </li>
+                        <li class="competitor-item">
+                            <div class="competitor-rank">3</div>
+                            <div class="competitor-info">
+                                <div class="competitor-name">Homes.com</div>
+                                <div class="competitor-type">Real estate aggregator</div>
+                            </div>
+                        </li>
+                        <li class="competitor-item">
+                            <div class="competitor-rank">4</div>
+                            <div class="competitor-info">
+                                <div class="competitor-name">rootsmg.com (Carefree Valley)</div>
+                                <div class="competitor-type">Direct competitor</div>
+                            </div>
+                        </li>
+                        <li class="competitor-item">
+                            <div class="competitor-rank">5</div>
+                            <div class="competitor-info">
+                                <div class="competitor-name">TripAdvisor</div>
+                                <div class="competitor-type">Has a page about YOUR property</div>
+                            </div>
+                        </li>
+                        <li class="competitor-item you">
+                            <div class="competitor-rank">?</div>
+                            <div class="competitor-info">
+                                <div class="competitor-name">Hometown Communities</div>
+                                <div class="competitor-type">Not on page 1</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
             <div class="card">
-                <h2>What Success Looks Like</h2>
-                <div class="alert alert-green">
-                    After fixing these issues, you should see:
+                <div class="card-header">
+                    <h2>What Success Looks Like</h2>
                 </div>
-                <ul style="margin-left: 20px; color: #4b5563;">
-                    <li>All community pages appearing in Google searches</li>
-                    <li>Rankings for "[Community Name] + [City]" searches</li>
-                    <li>Appearing in "mobile home community near me" searches</li>
-                    <li>Your website showing up before third-party sites</li>
-                    <li>More organic (free) traffic from people actively searching</li>
-                </ul>
+                <div class="card-body">
+                    <div class="alert alert-success" style="margin-bottom: 0;">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <div>
+                            <h3>After fixing these issues, you should see:</h3>
+                            <ul style="margin: 12px 0 0 20px; color: var(--text-gray);">
+                                <li>All community pages appearing in Google searches</li>
+                                <li>Rankings for "[Community Name] + [City]" searches</li>
+                                <li>Appearing in "mobile home community near me" searches</li>
+                                <li>Your website showing up before third-party sites</li>
+                                <li>More organic (free) traffic from people actively searching</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
 
         <!-- TECHNICAL AUDIT -->
         <div id="technical" class="section">
+
             <div class="card">
-                <h2>1. Indexing Issues</h2>
-                <div class="alert alert-red">
-                    <strong>Severe Under-Indexation:</strong> Only 2 community pages are indexed by Google.
+                <div class="card-header">
+                    <h2>1. Indexing Issues</h2>
                 </div>
+                <div class="card-body">
+                    <div class="alert alert-danger">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <div>
+                            <h3>Severe Under-Indexation</h3>
+                            <p>Only 2 community pages are indexed by Google.</p>
+                        </div>
+                    </div>
 
-                <h3>Evidence</h3>
-                <p>Query: <code>site:hometowncommunities.com/community/</code> returns only 2 results.</p>
+                    <h4 style="margin: 20px 0 12px; color: var(--navy);">Evidence</h4>
+                    <p style="color: var(--text-gray);">Query: <span class="inline-code">site:hometowncommunities.com/community/</span> returns only 2 results.</p>
 
-                <h3>Root Cause</h3>
-                <ul style="margin-left: 20px; color: #4b5563;">
-                    <li><code>page-sitemap.xml</code> contains only 12 generic pages</li>
-                    <li><code>property-sitemap.xml</code> contains lot listings, not community pages</li>
-                    <li>No dedicated community sitemap exists</li>
-                    <li>Community pages are not discoverable by crawlers</li>
-                </ul>
+                    <h4 style="margin: 20px 0 12px; color: var(--navy);">Root Cause</h4>
+                    <ul style="margin-left: 20px; color: var(--text-gray);">
+                        <li><span class="inline-code">page-sitemap.xml</span> contains only 12 generic pages</li>
+                        <li><span class="inline-code">property-sitemap.xml</span> contains lot listings, not community pages</li>
+                        <li>No dedicated community sitemap exists</li>
+                        <li>Community pages are not discoverable by crawlers</li>
+                    </ul>
+                </div>
             </div>
 
             <div class="card">
-                <h2>2. Duplicate Content</h2>
-                <div class="alert alert-yellow">
-                    Multiple URLs exist for the same community page.
+                <div class="card-header">
+                    <h2>2. Duplicate Content</h2>
                 </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                            <line x1="12" y1="9" x2="12" y2="13"></line>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                        <div>
+                            <h3>Multiple URLs for Same Content</h3>
+                            <p>Both URLs are indexed separately, competing against each other.</p>
+                        </div>
+                    </div>
 
-                <h3>Duplicate URLs Found</h3>
-                <pre><code>https://hometowncommunities.com/community/posada-del-sol/
+                    <h4 style="margin: 20px 0 12px; color: var(--navy);">Duplicate URLs Found</h4>
+                    <pre><code>https://hometowncommunities.com/community/posada-del-sol/
 https://hometowncommunities.com/community/posada-del-sol-mhp-llc/</code></pre>
 
-                <p>The first URL redirects to the second, but <strong>Google has indexed both separately</strong>, causing them to compete against each other.</p>
+                    <p style="color: var(--text-gray);">The first URL redirects to the second, but <strong>Google has indexed both separately</strong>.</p>
+                </div>
             </div>
 
             <div class="card">
-                <h2>3. Meta Tags Audit</h2>
-
-                <h3>Current State</h3>
-                <pre><code>&lt;title&gt;Posada Del Sol MHP LLC | Hometown Communities&lt;/title&gt;
+                <div class="card-header">
+                    <h2>3. Meta Tags Audit</h2>
+                </div>
+                <div class="card-body">
+                    <h4 style="margin: 0 0 12px; color: var(--navy);">Current State</h4>
+                    <pre><code>&lt;title&gt;Posada Del Sol MHP LLC | Hometown Communities&lt;/title&gt;
 &lt;meta name="description" content=""&gt; &lt;!-- MISSING --&gt;
 &lt;meta name="robots" content="max-image-preview:large, follow"&gt;</code></pre>
 
-                <table>
-                    <tr>
-                        <th>Element</th>
-                        <th>Status</th>
-                        <th>Problem</th>
-                    </tr>
-                    <tr>
-                        <td>Title</td>
-                        <td><span class="badge badge-yellow">Needs Work</span></td>
-                        <td>Not keyword-optimized, missing location</td>
-                    </tr>
-                    <tr>
-                        <td>Meta Description</td>
-                        <td><span class="badge badge-red">Missing</span></td>
-                        <td>No description for search results</td>
-                    </tr>
-                    <tr>
-                        <td>Robots</td>
-                        <td><span class="badge badge-yellow">Incomplete</span></td>
-                        <td>Missing explicit "index" directive</td>
-                    </tr>
-                    <tr>
-                        <td>H1</td>
-                        <td><span class="badge badge-yellow">Weak</span></td>
-                        <td>"Posada Del Sol MHP LLC" - not descriptive</td>
-                    </tr>
-                </table>
+                    <table style="margin: 20px 0;">
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Status</th>
+                                <th>Problem</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Title</td>
+                                <td><span class="badge badge-medium">Needs Work</span></td>
+                                <td>Not keyword-optimized, missing location</td>
+                            </tr>
+                            <tr>
+                                <td>Meta Description</td>
+                                <td><span class="badge badge-critical">Missing</span></td>
+                                <td>No description for search results</td>
+                            </tr>
+                            <tr>
+                                <td>Robots</td>
+                                <td><span class="badge badge-medium">Incomplete</span></td>
+                                <td>Missing explicit "index" directive</td>
+                            </tr>
+                            <tr>
+                                <td>H1</td>
+                                <td><span class="badge badge-medium">Weak</span></td>
+                                <td>"Posada Del Sol MHP LLC" - not descriptive</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                <h3>Recommended State</h3>
-                <pre><code>&lt;title&gt;Posada Del Sol | 55+ Manufactured Home Community in Harlingen, TX&lt;/title&gt;
-&lt;meta name="description" content="Posada Del Sol is a 55+ manufactured home and RV community in Harlingen, Texas. Affordable lot rent starting at $350/mo. Heated pool, fishing ponds, and year-round activities."&gt;
+                    <h4 style="margin: 20px 0 12px; color: var(--navy);">Recommended State</h4>
+                    <pre><code>&lt;title&gt;Posada Del Sol | 55+ Manufactured Home Community in Harlingen, TX&lt;/title&gt;
+&lt;meta name="description" content="Posada Del Sol is a 55+ manufactured home
+and RV community in Harlingen, Texas. Affordable lot rent starting at $350/mo.
+Heated pool, fishing ponds, and year-round activities."&gt;
 &lt;meta name="robots" content="index, follow"&gt;</code></pre>
-            </div>
-
-            <div class="card">
-                <h2>4. Schema Markup</h2>
-
-                <h3>Current Schema Types</h3>
-                <p>Organization, WebSite, WebPage, BreadcrumbList, Article</p>
-
-                <h3>Missing Schema Types</h3>
-                <table>
-                    <tr>
-                        <th>Schema Type</th>
-                        <th>Purpose</th>
-                        <th>Impact</th>
-                    </tr>
-                    <tr>
-                        <td>LocalBusiness / RVPark</td>
-                        <td>Local search visibility</td>
-                        <td><span class="badge badge-red">High</span></td>
-                    </tr>
-                    <tr>
-                        <td>Place (with coordinates)</td>
-                        <td>Map integrations</td>
-                        <td><span class="badge badge-red">High</span></td>
-                    </tr>
-                    <tr>
-                        <td>Offer</td>
-                        <td>Available homes in search</td>
-                        <td><span class="badge badge-yellow">Medium</span></td>
-                    </tr>
-                    <tr>
-                        <td>FAQPage</td>
-                        <td>FAQ rich snippets</td>
-                        <td><span class="badge badge-yellow">Medium</span></td>
-                    </tr>
-                </table>
-
-                <h3>Recommended Schema Template</h3>
-                <pre><code>{
-  "@context": "https://schema.org",
-  "@type": "RVPark",
-  "name": "Posada Del Sol",
-  "description": "55+ manufactured home and RV community",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "28513 Palm Court Drive",
-    "addressLocality": "Harlingen",
-    "addressRegion": "TX",
-    "postalCode": "78552"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "26.XXX",
-    "longitude": "-97.XXX"
-  },
-  "telephone": "(956) 420-4287"
-}</code></pre>
-            </div>
-
-            <div class="card">
-                <h2>5. Technical Errors</h2>
-                <div class="alert alert-red">
-                    <strong>51 console errors</strong> detected on page load.
                 </div>
+            </div>
 
-                <h3>Broken Resources (404)</h3>
-                <pre><code>Cavco - Rainier (17).jpg-584x438.jpeg  [404]
+            <div class="card">
+                <div class="card-header">
+                    <h2>4. Schema Markup</h2>
+                </div>
+                <div class="card-body">
+                    <h4 style="margin: 0 0 12px; color: var(--navy);">Current vs. Missing Schema</h4>
+
+                    <table style="margin: 20px 0;">
+                        <thead>
+                            <tr>
+                                <th>Schema Type</th>
+                                <th>Status</th>
+                                <th>Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Organization, WebSite, WebPage</td>
+                                <td><span class="badge badge-low">Present</span></td>
+                                <td>Basic</td>
+                            </tr>
+                            <tr>
+                                <td>LocalBusiness / RVPark</td>
+                                <td><span class="badge badge-critical">Missing</span></td>
+                                <td>High - Local search visibility</td>
+                            </tr>
+                            <tr>
+                                <td>Place (with coordinates)</td>
+                                <td><span class="badge badge-critical">Missing</span></td>
+                                <td>High - Map integrations</td>
+                            </tr>
+                            <tr>
+                                <td>Offer (available homes)</td>
+                                <td><span class="badge badge-high">Missing</span></td>
+                                <td>Medium - Rich snippets</td>
+                            </tr>
+                            <tr>
+                                <td>FAQPage</td>
+                                <td><span class="badge badge-high">Missing</span></td>
+                                <td>Medium - FAQ rich results</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>5. Technical Errors</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-danger">
+                        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <div>
+                            <h3>51 Console Errors Detected</h3>
+                            <p>Multiple broken resources and JavaScript errors on page load.</p>
+                        </div>
+                    </div>
+
+                    <h4 style="margin: 20px 0 12px; color: var(--navy);">Broken Images (404)</h4>
+                    <pre><code>Cavco - Rainier (17).jpg-584x438.jpeg  [404]
 Cavco - Rainier (18).jpg-584x438.jpeg  [404]
 Cavco - Rainier (19).jpg-584x438.jpeg  [404]
 Cavco - Rainier (21).jpg-584x438.jpeg  [404]
 Cavco - Rainier (23).jpg-584x438.jpeg  [404]</code></pre>
 
-                <h3>JavaScript Errors</h3>
-                <pre><code>ReferenceError: ScrollTrigger is not defined
+                    <h4 style="margin: 20px 0 12px; color: var(--navy);">JavaScript Errors</h4>
+                    <pre><code>ReferenceError: ScrollTrigger is not defined
     at child.cleanup (ep-scripts.js)</code></pre>
-
-                <h3>Impact</h3>
-                <ul style="margin-left: 20px; color: #4b5563;">
-                    <li>Wasted crawl budget on 404 requests</li>
-                    <li>Poor Core Web Vitals scores</li>
-                    <li>Degraded user experience</li>
-                    <li>Negative ranking signals</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2>6. Sitemap Analysis</h2>
-
-                <h3>Current Structure</h3>
-                <pre><code>sitemap_index.xml
-├── post-sitemap.xml (blog posts)
-├── page-sitemap.xml (12 generic pages)
-├── property-sitemap.xml (41 lot listings)
-├── property_city-sitemap.xml
-├── property_state-sitemap.xml
-└── ... (other taxonomies)</code></pre>
-
-                <div class="alert alert-red">
-                    <strong>Problem:</strong> No <code>community-sitemap.xml</code> exists. Community pages are not in any sitemap.
                 </div>
             </div>
 
             <div class="card">
-                <h2>7. Competitor Comparison</h2>
-                <p>How rootsmg.com (Carefree Valley) beats you:</p>
+                <div class="card-header">
+                    <h2>6. Competitor Comparison</h2>
+                </div>
+                <div class="card-body">
+                    <p style="color: var(--text-gray); margin-bottom: 16px;">How rootsmg.com (Carefree Valley) outranks you:</p>
 
-                <table>
-                    <tr>
-                        <th>Element</th>
-                        <th>Hometown Communities</th>
-                        <th>rootsmg.com</th>
-                    </tr>
-                    <tr>
-                        <td>Title</td>
-                        <td>"Posada Del Sol MHP LLC"</td>
-                        <td>"Carefree Valley | Harlingen, TX"</td>
-                    </tr>
-                    <tr>
-                        <td>Schema</td>
-                        <td>Basic Article schema</td>
-                        <td>Full Place + Offer + LocalBusiness</td>
-                    </tr>
-                    <tr>
-                        <td>Meta Description</td>
-                        <td>Missing</td>
-                        <td>Present with keywords</td>
-                    </tr>
-                    <tr>
-                        <td>Available Homes</td>
-                        <td>Separate pages</td>
-                        <td>Embedded on location page</td>
-                    </tr>
-                </table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Element</th>
+                                <th>Hometown Communities</th>
+                                <th>rootsmg.com</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Title</td>
+                                <td>"Posada Del Sol MHP LLC"</td>
+                                <td>"Carefree Valley | Harlingen, TX"</td>
+                            </tr>
+                            <tr>
+                                <td>Schema</td>
+                                <td>Basic Article schema</td>
+                                <td>Full Place + Offer + LocalBusiness</td>
+                            </tr>
+                            <tr>
+                                <td>Meta Description</td>
+                                <td><span class="badge badge-critical">Missing</span></td>
+                                <td><span class="badge badge-low">Present</span></td>
+                            </tr>
+                            <tr>
+                                <td>Available Homes</td>
+                                <td>Separate pages</td>
+                                <td>Embedded on location page</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
         </div>
 
-        <!-- REMEDIATION PROPOSAL -->
+        <!-- REMEDIATION PLAN -->
         <div id="proposal" class="section">
-            <div class="card">
-                <h2>Priority Matrix</h2>
-                <p>Tasks ranked by impact and urgency:</p>
 
-                <div class="priority-matrix">
-                    <div class="priority-item">
-                        <span class="priority-badge priority-critical">Critical</span>
-                        <div>Create & submit community sitemap to Google</div>
-                    </div>
-                    <div class="priority-item">
-                        <span class="priority-badge priority-critical">Critical</span>
-                        <div>Fix duplicate content / URL issues</div>
-                    </div>
-                    <div class="priority-item">
-                        <span class="priority-badge priority-critical">Critical</span>
-                        <div>Add meta descriptions to all community pages</div>
-                    </div>
-                    <div class="priority-item">
-                        <span class="priority-badge priority-critical">Critical</span>
-                        <div>Fix broken images and JavaScript errors</div>
-                    </div>
-                    <div class="priority-item">
-                        <span class="priority-badge priority-high">High</span>
-                        <div>Optimize title tags with location keywords</div>
-                    </div>
-                    <div class="priority-item">
-                        <span class="priority-badge priority-high">High</span>
-                        <div>Implement LocalBusiness schema markup</div>
-                    </div>
-                    <div class="priority-item">
-                        <span class="priority-badge priority-high">High</span>
-                        <div>Create Google Business Profiles</div>
-                    </div>
-                    <div class="priority-item">
-                        <span class="priority-badge priority-medium">Medium</span>
-                        <div>Directory listings (MHVillage, etc.)</div>
-                    </div>
-                    <div class="priority-item">
-                        <span class="priority-badge priority-medium">Medium</span>
-                        <div>Create city-specific landing pages</div>
-                    </div>
-                    <div class="priority-item">
-                        <span class="priority-badge priority-low">Lower</span>
-                        <div>Content development & link building</div>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Priority Matrix</h2>
+                </div>
+                <div class="card-body">
+                    <div class="priority-list">
+                        <div class="priority-item">
+                            <span class="badge badge-critical">Critical</span>
+                            <div class="task">Create & submit community sitemap to Google</div>
+                            <div class="effort">Low Effort</div>
+                            <div class="impact">High Impact</div>
+                        </div>
+                        <div class="priority-item">
+                            <span class="badge badge-critical">Critical</span>
+                            <div class="task">Fix duplicate content / URL issues</div>
+                            <div class="effort">Low Effort</div>
+                            <div class="impact">High Impact</div>
+                        </div>
+                        <div class="priority-item">
+                            <span class="badge badge-critical">Critical</span>
+                            <div class="task">Add meta descriptions to all community pages</div>
+                            <div class="effort">Low Effort</div>
+                            <div class="impact">High Impact</div>
+                        </div>
+                        <div class="priority-item">
+                            <span class="badge badge-critical">Critical</span>
+                            <div class="task">Fix broken images and JavaScript errors</div>
+                            <div class="effort">Medium</div>
+                            <div class="impact">Medium</div>
+                        </div>
+                        <div class="priority-item">
+                            <span class="badge badge-high">High</span>
+                            <div class="task">Optimize title tags with location keywords</div>
+                            <div class="effort">Low Effort</div>
+                            <div class="impact">High Impact</div>
+                        </div>
+                        <div class="priority-item">
+                            <span class="badge badge-high">High</span>
+                            <div class="task">Implement LocalBusiness schema markup</div>
+                            <div class="effort">Medium</div>
+                            <div class="impact">High Impact</div>
+                        </div>
+                        <div class="priority-item">
+                            <span class="badge badge-high">High</span>
+                            <div class="task">Create Google Business Profiles</div>
+                            <div class="effort">Medium</div>
+                            <div class="impact">High Impact</div>
+                        </div>
+                        <div class="priority-item">
+                            <span class="badge badge-medium">Medium</span>
+                            <div class="task">Directory listings (MHVillage, etc.)</div>
+                            <div class="effort">Medium</div>
+                            <div class="impact">Medium</div>
+                        </div>
+                        <div class="priority-item">
+                            <span class="badge badge-medium">Medium</span>
+                            <div class="task">Create city-specific landing pages</div>
+                            <div class="effort">High Effort</div>
+                            <div class="impact">High Impact</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
+            <div class="phase-card">
                 <div class="phase-header">
-                    <h3>Phase 1: Critical Fixes (Week 1-2)</h3>
+                    <div class="phase-number">1</div>
+                    <div class="phase-title">Critical Fixes</div>
+                    <div class="phase-timeline">Week 1-2</div>
                 </div>
+                <div class="phase-body">
+                    <div class="phase-section">
+                        <h4>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            Fix Indexing Issues
+                        </h4>
+                        <ul class="checklist">
+                            <li>Create dedicated <span class="inline-code">community-sitemap.xml</span> containing all community pages</li>
+                            <li>Add sitemap to <span class="inline-code">sitemap_index.xml</span></li>
+                            <li>Submit new sitemap to Google Search Console</li>
+                            <li>Request indexing for each community page</li>
+                            <li>Verify robots.txt allows crawling of /community/ path</li>
+                        </ul>
+                    </div>
 
-                <h3>1.1 Fix Indexing Issues</h3>
-                <ul class="checklist">
-                    <li>Create dedicated <code>community-sitemap.xml</code> containing all community pages</li>
-                    <li>Add sitemap to <code>sitemap_index.xml</code></li>
-                    <li>Submit new sitemap to Google Search Console</li>
-                    <li>Request indexing for each community page</li>
-                    <li>Verify robots.txt allows crawling of /community/ path</li>
-                </ul>
+                    <div class="phase-section">
+                        <h4>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Resolve Duplicate Content
+                        </h4>
+                        <ul class="checklist">
+                            <li>Audit all community pages for duplicate URLs</li>
+                            <li>Ensure 301 redirects are in place for all variations</li>
+                            <li>Submit URL removal requests for duplicate indexed pages</li>
+                            <li>Verify canonical tags on all community pages</li>
+                        </ul>
+                    </div>
 
-                <h3>1.2 Resolve Duplicate Content</h3>
-                <ul class="checklist">
-                    <li>Audit all community pages for duplicate URLs</li>
-                    <li>Ensure 301 redirects are in place for all variations</li>
-                    <li>Submit URL removal requests for duplicate indexed pages</li>
-                    <li>Verify canonical tags on all community pages</li>
-                </ul>
-
-                <h3>1.3 Fix Broken Resources</h3>
-                <ul class="checklist">
-                    <li>Identify all 404 errors on community pages</li>
-                    <li>Re-upload or remove references to missing images</li>
-                    <li>Fix GSAP ScrollTrigger dependency loading</li>
-                    <li>Re-test pages for console errors</li>
-                </ul>
+                    <div class="phase-section">
+                        <h4>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="15" y1="9" x2="9" y2="15"></line>
+                                <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                            Fix Broken Resources
+                        </h4>
+                        <ul class="checklist">
+                            <li>Identify all 404 errors on community pages</li>
+                            <li>Re-upload or remove references to missing images</li>
+                            <li>Fix GSAP ScrollTrigger dependency loading</li>
+                            <li>Re-test pages for console errors</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
+            <div class="phase-card">
                 <div class="phase-header">
-                    <h3>Phase 2: On-Page Optimization (Week 2-4)</h3>
+                    <div class="phase-number">2</div>
+                    <div class="phase-title">On-Page Optimization</div>
+                    <div class="phase-timeline">Week 2-4</div>
                 </div>
+                <div class="phase-body">
+                    <div class="phase-section">
+                        <h4>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                            </svg>
+                            Meta Tag Implementation
+                        </h4>
+                        <ul class="checklist">
+                            <li>Write unique title tags for each community page
+                                <span class="note">Format: [Community Name] | [Type] in [City], [State]</span>
+                            </li>
+                            <li>Write unique meta descriptions (150-160 characters)
+                                <span class="note">Include: community type, location, key amenity, CTA</span>
+                            </li>
+                            <li>Update robots meta to <span class="inline-code">index, follow</span></li>
+                            <li>Optimize H1 tags with location keywords</li>
+                        </ul>
+                    </div>
 
-                <h3>2.1 Meta Tag Implementation</h3>
-                <ul class="checklist">
-                    <li>Write unique title tags for each community page<br><small style="color:#64748b;">Format: [Community Name] | [Type] in [City], [State]</small></li>
-                    <li>Write unique meta descriptions (150-160 characters)<br><small style="color:#64748b;">Include: community type, location, key amenity, CTA</small></li>
-                    <li>Update robots meta to <code>index, follow</code></li>
-                    <li>Optimize H1 tags with location keywords</li>
-                </ul>
-
-                <h3>2.2 Schema Markup Enhancement</h3>
-                <ul class="checklist">
-                    <li>Implement LocalBusiness or RVPark schema on each community page</li>
-                    <li>Add Place schema with geo coordinates</li>
-                    <li>Add Offer schema for available homes</li>
-                    <li>Implement FAQPage schema for common questions</li>
-                    <li>Test all schema with Google Rich Results Test</li>
-                </ul>
-
-                <h3>2.3 Content Optimization</h3>
-                <ul class="checklist">
-                    <li>Add location keywords naturally throughout content</li>
-                    <li>Ensure each community page has 500+ words of unique content</li>
-                    <li>Add internal links to related communities and city pages</li>
-                    <li>Optimize image alt text with descriptive keywords</li>
-                </ul>
+                    <div class="phase-section">
+                        <h4>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                            Schema Markup Enhancement
+                        </h4>
+                        <ul class="checklist">
+                            <li>Implement LocalBusiness or RVPark schema on each community page</li>
+                            <li>Add Place schema with geo coordinates</li>
+                            <li>Add Offer schema for available homes</li>
+                            <li>Implement FAQPage schema for common questions</li>
+                            <li>Test all schema with Google Rich Results Test</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
+            <div class="phase-card">
                 <div class="phase-header">
-                    <h3>Phase 3: Local SEO (Week 4-6)</h3>
+                    <div class="phase-number">3</div>
+                    <div class="phase-title">Local SEO</div>
+                    <div class="phase-timeline">Week 4-6</div>
                 </div>
+                <div class="phase-body">
+                    <div class="phase-section">
+                        <h4>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Google Business Profile Setup
+                        </h4>
+                        <ul class="checklist">
+                            <li>Create or claim Google Business Profile for each community</li>
+                            <li>Ensure NAP (Name, Address, Phone) matches website exactly</li>
+                            <li>Add photos, hours, amenities, and services</li>
+                            <li>Link GBP to corresponding website page</li>
+                            <li>Set up review request process</li>
+                        </ul>
+                    </div>
 
-                <h3>3.1 Google Business Profile Setup</h3>
-                <ul class="checklist">
-                    <li>Create or claim Google Business Profile for each community</li>
-                    <li>Ensure NAP (Name, Address, Phone) matches website exactly</li>
-                    <li>Add photos, hours, amenities, and services</li>
-                    <li>Link GBP to corresponding website page</li>
-                    <li>Set up review request process</li>
-                </ul>
-
-                <h3>3.2 Directory Listings</h3>
-                <ul class="checklist">
-                    <li>Create/claim listings on MHVillage, MHBay, 55places.com</li>
-                    <li>Claim existing TripAdvisor and Campspot listings</li>
-                    <li>Ensure NAP consistency across all directories</li>
-                </ul>
-
-                <h3>3.3 City Landing Pages</h3>
-                <ul class="checklist">
-                    <li>Create optimized landing pages for each city served</li>
-                    <li>Include list of communities in that city</li>
-                    <li>Add local content (neighborhood info, nearby attractions)</li>
-                </ul>
+                    <div class="phase-section">
+                        <h4>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                            Directory Listings
+                        </h4>
+                        <ul class="checklist">
+                            <li>Create/claim listings on MHVillage, MHBay, 55places.com</li>
+                            <li>Claim existing TripAdvisor and Campspot listings</li>
+                            <li>Ensure NAP consistency across all directories</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <div class="card">
+            <div class="phase-card">
                 <div class="phase-header">
-                    <h3>Phase 4: Ongoing Optimization (Month 2+)</h3>
+                    <div class="phase-number">4</div>
+                    <div class="phase-title">Ongoing Optimization</div>
+                    <div class="phase-timeline">Month 2+</div>
                 </div>
-
-                <h3>4.1 Content Development</h3>
-                <ul class="checklist">
-                    <li>Create FAQ content for each community</li>
-                    <li>Develop neighborhood guides</li>
-                    <li>Write blog posts targeting long-tail keywords</li>
-                    <li>Add resident testimonials with Review schema</li>
-                </ul>
-
-                <h3>4.2 Link Building</h3>
-                <ul class="checklist">
-                    <li>Reach out to local chambers of commerce</li>
-                    <li>Get listed in local business directories</li>
-                    <li>Pursue local news/PR opportunities</li>
-                </ul>
-
-                <h3>4.3 Monitoring & Reporting</h3>
-                <ul class="checklist">
-                    <li>Set up Google Search Console monitoring</li>
-                    <li>Track keyword rankings weekly</li>
-                    <li>Monitor indexing status monthly</li>
-                    <li>Quarterly technical audits</li>
-                </ul>
+                <div class="phase-body">
+                    <div class="phase-section">
+                        <h4>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="18" y1="20" x2="18" y2="10"></line>
+                                <line x1="12" y1="20" x2="12" y2="4"></line>
+                                <line x1="6" y1="20" x2="6" y2="14"></line>
+                            </svg>
+                            Monitoring & Reporting
+                        </h4>
+                        <ul class="checklist">
+                            <li>Set up Google Search Console monitoring</li>
+                            <li>Track keyword rankings weekly</li>
+                            <li>Monitor indexing status monthly</li>
+                            <li>Quarterly technical audits</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="card">
-                <h2>KPIs to Track</h2>
-                <table>
-                    <tr>
-                        <th>Metric</th>
-                        <th>Current</th>
-                        <th>Target (90 days)</th>
-                    </tr>
-                    <tr>
-                        <td>Indexed community pages</td>
-                        <td>2</td>
-                        <td>All pages</td>
-                    </tr>
-                    <tr>
-                        <td>Page 1 rankings (brand terms)</td>
-                        <td>0</td>
-                        <td>100%</td>
-                    </tr>
-                    <tr>
-                        <td>Technical errors</td>
-                        <td>51</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>Google Business Profiles</td>
-                        <td>Unknown</td>
-                        <td>1 per community</td>
-                    </tr>
-                    <tr>
-                        <td>Organic traffic (community pages)</td>
-                        <td>Baseline TBD</td>
-                        <td>+50%</td>
-                    </tr>
-                </table>
+                <div class="card-header">
+                    <h2>KPIs to Track</h2>
+                </div>
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Current</th>
+                                <th>Target (90 days)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Indexed community pages</td>
+                                <td><strong style="color: var(--danger);">2</strong></td>
+                                <td><strong style="color: var(--success);">All pages</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Page 1 rankings (brand terms)</td>
+                                <td><strong style="color: var(--danger);">0</strong></td>
+                                <td><strong style="color: var(--success);">100%</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Technical errors</td>
+                                <td><strong style="color: var(--danger);">51</strong></td>
+                                <td><strong style="color: var(--success);">0</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Google Business Profiles</td>
+                                <td><strong style="color: var(--warning);">Unknown</strong></td>
+                                <td><strong style="color: var(--success);">1 per community</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Organic traffic (community pages)</td>
+                                <td>Baseline TBD</td>
+                                <td><strong style="color: var(--success);">+50%</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="card">
-                <h2>Tools & Access Required</h2>
-                <table>
-                    <tr>
-                        <th>Tool/Access</th>
-                        <th>Purpose</th>
-                    </tr>
-                    <tr>
-                        <td>Google Search Console</td>
-                        <td>Sitemap submission, indexing requests, monitoring</td>
-                    </tr>
-                    <tr>
-                        <td>Google Business Profile Manager</td>
-                        <td>Local SEO setup</td>
-                    </tr>
-                    <tr>
-                        <td>WordPress Admin</td>
-                        <td>Meta tags, schema, content updates</td>
-                    </tr>
-                    <tr>
-                        <td>FTP/File Access</td>
-                        <td>Sitemap creation, image fixes</td>
-                    </tr>
-                </table>
+                <div class="card-header">
+                    <h2>Tools & Access Required</h2>
+                </div>
+                <div class="card-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tool/Access</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Google Search Console</td>
+                                <td>Sitemap submission, indexing requests, monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>Google Business Profile Manager</td>
+                                <td>Local SEO setup</td>
+                            </tr>
+                            <tr>
+                                <td>WordPress Admin</td>
+                                <td>Meta tags, schema, content updates</td>
+                            </tr>
+                            <tr>
+                                <td>FTP/File Access</td>
+                                <td>Sitemap creation, image fixes</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-                <h3 style="margin-top: 20px;">Recommended WordPress Plugins</h3>
-                <ul style="margin-left: 20px; color: #4b5563;">
-                    <li><strong>Yoast SEO</strong> or <strong>RankMath</strong> - Meta tags, sitemaps</li>
-                    <li><strong>Schema Pro</strong> - Structured data</li>
-                    <li><strong>WP Rocket</strong> - Performance optimization</li>
-                </ul>
+                    <h4 style="margin: 24px 0 12px; color: var(--navy);">Recommended WordPress Plugins</h4>
+                    <ul style="margin-left: 20px; color: var(--text-gray);">
+                        <li><strong>Yoast SEO</strong> or <strong>RankMath</strong> — Meta tags, sitemaps</li>
+                        <li><strong>Schema Pro</strong> — Structured data</li>
+                        <li><strong>WP Rocket</strong> — Performance optimization</li>
+                    </ul>
+                </div>
             </div>
+
         </div>
-    </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Prepared by RoverPass • May 5, 2026</p>
+    </footer>
 
     <script>
         function showSection(sectionId) {
-            // Hide all sections
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
 
-            // Show selected section
             document.getElementById(sectionId).classList.add('active');
             event.target.classList.add('active');
         }
