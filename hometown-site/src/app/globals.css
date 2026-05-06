@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+
+  /* Primary brand colors - Hometown Communities */
+  --color-primary: #609AB4;
+  --color-primary-dark: #004274;
+  --color-primary-light: #99B8C6;
+
+  /* Accent colors */
+  --color-accent: #FFA861;
+  --color-accent-warm: #FFF1E6;
+
+  /* Extended grays */
+  --color-gray-100: #EEF1F5;
+  --color-gray-600: #3A3D3F;
+  --color-gray-700: #333333;
+  --color-gray-800: #212529;
+  --color-gray-900: #222222;
+
+  /* Additional accent */
+  --color-gold: #D1C292;
+
+  /* Custom shadows */
+  --shadow-card: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-card-hover: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary-dark);
+  outline-offset: 2px;
+}
+
+/* Remove default button styles */
+button {
+  cursor: pointer;
+}
+
+/* Link underline animation */
+a {
+  text-decoration-skip-ink: auto;
+}
+
+/* Custom utility classes */
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+.shadow-card-hover {
+  box-shadow: var(--shadow-card-hover);
+}
